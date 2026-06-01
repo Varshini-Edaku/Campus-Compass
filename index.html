@@ -1,12 +1,1025 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CAMPUS COMPASS - Amrita Amaravati 2026 Fresher Guide</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAMPUS COMPASS - Amrita Amaravati 2026 Fresher Guide</title>
+  
+  <!-- Font Imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS v3 Browser CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind CSS Configuration Options -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              maroon: '#851215',
+              'maroon-light': '#a61a1e',
+              gold: '#ebb232',
+              'gold-light': '#edd17d',
+              'gold-dark': '#c4901f'
+            },
+            dark: {
+              card: '#181111',
+              bg: '#0c0808'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          scale: {
+            '102': '1.02',
+            '103': '1.03'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for specific styling details -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lucide Icons CDN Script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#FAF8F5] text-slate-800 dark:bg-dark-bg dark:text-slate-100 font-sans antialiased min-h-screen transition-colors duration-300">
+
+  <!-- Background soft ambient blobs -->
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-maroon/5 dark:bg-brand-maroon/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-brand-gold/5 dark:bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <nav class="bg-white/80 dark:bg-[#181111]/80 backdrop-blur-md rounded-2xl border border-slate-205/60 dark:border-brand-maroon/20 shadow-md px-6 py-2.5 flex items-center justify-between">
+        
+        <!-- Logo and Brand -->
+        <a href="#" class="flex items-center gap-2.5 group hover:scale-102 transition-transform">
+          <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-brand-maroon dark:bg-brand-maroon-light shadow-md">
+            <i data-lucide="graduation-cap" class="h-5.5 w-5.5 text-brand-gold shrink-0 transition-transform duration-300 group-hover:rotate-12"></i>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="font-bold text-sm tracking-widest text-brand-maroon dark:text-brand-gold-light uppercase leading-none">AMRITA</span>
+            <span class="text-[9.5px] font-mono font-extrabold tracking-widest text-slate-400 dark:text-slate-500 uppercase leading-none mt-1">Amaravati Guide</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#academics" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Academics</a>
+          <a href="#hostel" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Hostel & Housing</a>
+          <a href="#clubs" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Clubs & Events</a>
+          <a href="#roadmap" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Survival Timeline</a>
+          <a href="#faq" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">FAQs Helpdesk</a>
+        </div>
+
+        <!-- Controls (Theme and Menu) -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle Switcher -->
+          <button id="theme-toggle-btn" class="p-2.5 rounded-xl bg-slate-50 dark:bg-[#251515] border border-slate-150 dark:border-brand-maroon/20 hover:border-slate-300 hover:scale-102 active:scale-95 text-slate-600 dark:text-brand-gold-light transition-all cursor-pointer" aria-label="Toggle Light/Dark Theme">
+            <i data-lucide="sun" id="sun-icon" class="h-4.5 w-4.5 hidden dark:block"></i>
+            <i data-lucide="moon" id="moon-icon" class="h-4.5 w-4.5 dark:hidden"></i>
+          </button>
+
+          <!-- Helpdesk Button -->
+          <a href="#faq" class="p-2.5 rounded-xl bg-[#FAF8F5] dark:bg-[#1f1111] border border-brand-maroon/10 dark:border-brand-gold/20 hover:border-brand-maroon/20 dark:hover:border-brand-gold/40 text-brand-maroon dark:text-brand-gold transition-all hidden sm:inline-block cursor-pointer" title="Search FAQs Directory">
+            <i data-lucide="help-circle" class="h-4.5 w-4.5"></i>
+          </a>
+
+          <!-- Mobile Nav Hamburger Menu -->
+          <button id="mobile-menu-toggle" class="p-2.5 rounded-xl md:hidden text-slate-700 dark:text-slate-200 cursor-pointer bg-slate-50 dark:bg-[#251515] border border-slate-200 dark:border-brand-maroon/20">
+            <i data-lucide="menu" id="menu-open-icon" class="h-[18px] w-[18px]"></i>
+            <i data-lucide="x" id="menu-close-icon" class="h-[18px] w-[18px] hidden"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Drawer Panel -->
+      <div id="mobile-nav-panel" class="hidden md:hidden mt-2 bg-white dark:bg-[#181111] border border-slate-200 dark:border-brand-maroon/30 shadow-xl rounded-2xl overflow-hidden flex flex-col p-4 gap-3 animate-fade-in text-left">
+        <a href="#academics" class="mobile-nav-link text-sm font-bold text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-brand-maroon/10 hover:text-brand-maroon dark:hover:text-brand-gold transition-all">Academics & CGPA Guide</a>
+        <a href="#hostel" class="mobile-nav-link text-sm font-bold text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-brand-maroon/10 hover:text-brand-maroon dark:hover:text-brand-gold transition-all">Hostels & Conveniences</a>
+        <a href="#clubs" class="mobile-nav-link text-sm font-bold text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-brand-maroon/10 hover:text-brand-maroon dark:hover:text-brand-gold transition-all">Clubs & Event Spotlight</a>
+        <a href="#roadmap" class="mobile-nav-link text-sm font-bold text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-brand-maroon/10 hover:text-brand-maroon dark:hover:text-brand-gold transition-all">Semester Timeline Roadmap</a>
+        <a href="#faq" class="mobile-nav-link text-sm font-bold text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-brand-maroon/10 hover:text-brand-maroon dark:hover:text-brand-gold transition-all">Helpdesk FAQs Directory</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SCROLL CONTENT -->
+  <main class="pt-24">
+    
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-4 py-20 md:py-28 text-center relative overflow-hidden">
+      <!-- Background Grid Overlay -->
+      <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10 pointer-events-none" style="background-image: radial-gradient(#851215 1px, transparent 1px); background-size: 24px 24px;"></div>
+      
+      <div class="relative z-10 max-w-5xl mx-auto space-y-9">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-maroon/5 text-brand-maroon dark:bg-brand-gold/10 dark:text-brand-gold-light font-extrabold text-[11px] tracking-wider uppercase border border-brand-maroon/10 dark:border-brand-gold/30">
+          <span>✨ Compiled and Curated by Seniors of Amrita Amaravati</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-7xl font-serif font-black tracking-tight leading-none text-slate-900 dark:text-white">
+          Succeed In Your First Year <br class="hidden md:block"/>
+          At <span class="text-brand-maroon dark:text-brand-gold text-glow-gold">Amrita Amaravati 2026</span>
+        </h1>
+        
+        <p class="text-base md:text-xl text-slate-605 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-semibold">
+          The premium, unfiltered senior blueprint. Master the relative academic curves, 
+          explore official campus clubs, calculate assessments on-the-fly, and access direct hostel survival guides.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap justify-center items-center gap-4 pt-3">
+          <button id="hero-action-faq" class="bg-brand-maroon hover:bg-brand-maroon-light dark:bg-brand-gold dark:hover:bg-brand-gold-light text-[#ffffff] dark:text-[#2d2105] font-extrabold text-xs tracking-wider uppercase px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg shadow-brand-maroon/15 dark:shadow-brand-gold/10 cursor-pointer flex items-center gap-2">
+            <span>Browse FAQ Directory</span>
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </button>
+          
+          <a href="#academics" class="bg-[#ffffff] hover:bg-slate-50 dark:bg-[#181111] dark:hover:bg-[#201717] text-slate-705 dark:text-brand-gold font-extrabold text-xs tracking-wider uppercase px-8 py-4 rounded-xl border border-slate-200 dark:border-brand-maroon/30 transition-all hover:scale-[1.02] shadow-sm flex items-center gap-2">
+            <span>Assessment Simulator</span>
+            <i data-lucide="mouse-pointer" class="h-4 w-4 text-brand-maroon dark:text-brand-gold"></i>
+          </a>
+        </div>
+
+        <!-- Premium Stats Cards Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 pt-10">
+          <div class="bg-[#ffffff] dark:bg-[#181111] p-6 rounded-2xl border border-slate-150 dark:border-brand-maroon/10 shadow-sm transition-all duration-300 hover:border-brand-gold/30 text-center">
+            <div class="text-sm md:text-base font-extrabold text-brand-maroon dark:text-brand-gold">CSE / CCE / AI / AIDS</div>
+            <div class="text-[10px] text-slate-400 dark:text-slate-400 font-mono font-bold uppercase mt-2 tracking-widest">Core Programs</div>
+          </div>
+          <div class="bg-[#ffffff] dark:bg-[#181111] p-6 rounded-2xl border border-slate-150 dark:border-brand-maroon/10 shadow-sm transition-all duration-300 hover:border-brand-gold/30 text-center">
+            <div class="text-sm md:text-base font-extrabold text-brand-maroon dark:text-brand-gold">250 - 300 Batch</div>
+            <div class="text-[10px] text-slate-400 dark:text-slate-400 font-mono font-bold uppercase mt-2 tracking-widest">Intake Per Course</div>
+          </div>
+          <div class="bg-[#ffffff] dark:bg-[#181111] p-6 rounded-2xl border border-slate-150 dark:border-brand-maroon/10 shadow-sm transition-all duration-300 hover:border-brand-gold/30 text-center">
+            <div class="text-sm md:text-base font-extrabold text-brand-maroon dark:text-brand-gold">100% Cohesive</div>
+            <div class="text-[10px] text-slate-400 dark:text-slate-400 font-mono font-bold uppercase mt-2 tracking-widest">Student Harmony</div>
+          </div>
+          <div class="bg-[#ffffff] dark:bg-[#181111] p-6 rounded-2xl border border-slate-150 dark:border-brand-maroon/10 shadow-sm transition-all duration-300 hover:border-brand-gold/30 text-center">
+            <div class="text-sm md:text-base font-extrabold text-brand-maroon dark:text-brand-gold">July Semester</div>
+            <div class="text-[10px] text-slate-400 dark:text-slate-400 font-mono font-bold uppercase mt-2 tracking-widest">First Year Start</div>
+          </div>
+        </div>
+
+        <!-- High-res Static Campus Curvilinear Highlight Image -->
+        <div class="pt-10 max-w-5xl mx-auto">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200/40 dark:border-brand-maroon/10 relative group aspect-[21/9] min-h-[250px] bg-[#0c0808]">
+            <img 
+              src="assets/images/amrita_amaravati_campus_1780320949387.png" 
+              alt="Amrita Vishwa Vidyapeetham, Amaravati Campus Highlights" 
+              class="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-103"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/10 to-transparent flex flex-col justify-end p-6 md:p-10 text-left">
+              <div class="backdrop-blur-md bg-[#251515]/60 border border-brand-maroon/30 p-5 md:p-6 rounded-2xl max-w-xl text-white">
+                <span class="text-[9px] font-mono font-extrabold tracking-widest uppercase bg-brand-maroon px-2.5 py-1 rounded inline-block text-brand-gold-light border border-brand-gold/20">CAMPUS GALLERY</span>
+                <h3 class="text-xl md:text-2xl font-serif font-black mt-2 text-white tracking-tight uppercase">
+                  The Majestic Curvilinear Academic Wing
+                </h3>
+                <p class="text-xs text-slate-200 mt-2 font-medium leading-relaxed">
+                  Amrita Amaravati features a standard-setting, ultra-modern curvilinear campus building of glass & steel, equipped with central AC, smart labs, and spacious green sports arenas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE ACTIVE CURFEW RADER WIDGET -->
+    <section class="max-w-7xl mx-auto px-4 py-8 relative z-10-current">
+      <div class="bg-white dark:bg-[#181111] border border-brand-maroon/15 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm relative overflow-hidden">
+        
+        <!-- Live status content -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto text-left">
+          <div class="flex items-center gap-3">
+            <span class="relative flex h-4 w-4">
+              <span id="radar-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+              <span id="radar-dot" class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-extrabold text-brand-maroon dark:text-brand-gold font-mono uppercase tracking-widest flex items-center gap-1.5">
+              <i data-lucide="radio" class="h-3.5 w-3.5 animate-pulse text-brand-maroon dark:text-brand-gold"></i>
+              Active Campus Radar
+            </span>
+          </div>
+
+          <div class="mt-2 sm:mt-0">
+            <h2 id="radar-title" class="font-serif font-black text-xl md:text-2xl uppercase tracking-tight text-emerald-500">
+              Campus Open ☀️
+            </h2>
+            <p id="radar-message" class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1 font-semibold leading-relaxed">
+              Free movement in campus. Seniors say: Use this time to explore the academic block!
+            </p>
+          </div>
+        </div>
+
+        <!-- Clock element -->
+        <div class="text-left md:text-right border-t md:border-t-0 pt-4 md:pt-0 border-slate-200 dark:border-brand-maroon/15 w-full md:w-auto flex flex-col md:items-end justify-center shrink-0">
+          <div class="flex items-center gap-1.5 text-xs md:text-sm font-mono text-brand-maroon dark:text-brand-gold-light font-extrabold bg-brand-maroon/5 dark:bg-brand-maroon/20 px-4 py-1.5 rounded-full border border-brand-maroon/10 dark:border-brand-gold/30">
+            <i data-lucide="clock" class="h-4 w-4 animate-pulse"></i>
+            <span id="radar-clock">TIME: 2:00:00 PM</span>
+          </div>
+          <div class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 font-medium">
+            Calculated from your browser's local timezone.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMICS & CGPA SIMULATOR -->
+    <section id="academics" class="max-w-7xl mx-auto px-4 py-20 scroll-mt-24">
+      
+      <!-- Headers -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-[10px] tracking-widest uppercase bg-brand-maroon/5 dark:bg-brand-gold/10 text-brand-maroon dark:text-brand-gold-light font-extrabold px-4 py-1.5 rounded-xl border border-brand-maroon/10 dark:border-brand-gold/30">
+          ACADEMIC SUCCESS BLUEPRINT
+        </span>
+        <h2 class="text-3xl md:text-4xl font-serif font-black mt-4 tracking-tight uppercase text-slate-905 dark:text-white">
+          Relative Curve Grade Predictor
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-semibold">
+          Don't wait semesters to see grades! Amrita uses a strict 70-30 internal-external ratio. Scale midterm scores to 20 marks, internals to 50, and finals to 30 marks to see your curve target.
+        </p>
+      </div>
+
+      <!-- Simulator Layout Split (Calculator Left, Result Cards Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20 text-left">
+        
+        <!-- Input Form (7 Columns) -->
+        <div class="lg:col-span-7 bg-white dark:bg-[#181111] p-6 md:p-8 rounded-3xl border border-slate-205/65 dark:border-brand-maroon/20 shadow-md">
+          <div class="flex items-center gap-2 mb-6">
+            <i data-lucide="book-open" class="h-5 w-5 text-brand-maroon dark:text-brand-gold"></i>
+            <h3 class="font-serif font-black text-lg text-slate-900 dark:text-white uppercase tracking-tight">Grade Estimator Inputs</h3>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Midterm Field -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label for="midterm-score" class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10.5px]">Mid-Term score (Written out of 50)</label>
+                <span class="font-mono text-brand-maroon dark:text-brand-gold font-bold">Standard value: max 50</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input type="range" id="midterm-range" min="0" max="50" value="38" class="w-full accent-brand-maroon dark:accent-brand-gold h-1.5 rounded-full cursor-pointer bg-slate-100 dark:bg-slate-900" />
+                <input type="number" id="midterm-num" min="0" max="50" value="38" class="w-20 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 text-xs font-bold font-mono dark:text-white bg-[#FAF8F5] dark:bg-[#130d0d] text-center focus:outline-none" />
+              </div>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium">Auto-scales to 20 Marks in final calculation.</p>
+            </div>
+
+            <!-- Other Internals -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label for="internals-score" class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10.5px]">Quizzes, Labs, Mini-Projects (Sum of 50)</label>
+                <span class="font-mono text-brand-maroon dark:text-brand-gold font-bold">Standard value: max 50</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input type="range" id="internals-range" min="0" max="50" value="44" class="w-full accent-brand-maroon dark:accent-brand-gold h-1.5 rounded-full cursor-pointer bg-slate-100 dark:bg-slate-900" />
+                <input type="number" id="internals-num" min="0" max="50" value="44" class="w-20 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 text-xs font-bold font-mono dark:text-white bg-[#FAF8F5] dark:bg-[#130d0d] text-center focus:outline-none" />
+              </div>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium">Represents cumulative lab records and assignments scores.</p>
+            </div>
+
+            <!-- End-Sem Field -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10.5px]">End-Semester Exam (Written out of 100)</label>
+                <span class="font-mono text-brand-maroon dark:text-brand-gold font-bold">Standard value: max 100</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input type="range" id="endsem-range" min="0" max="100" value="78" class="w-full accent-brand-maroon dark:accent-brand-gold h-1.5 rounded-full cursor-pointer bg-slate-100 dark:bg-slate-900" />
+                <input type="number" id="endsem-num" min="0" max="100" value="78" class="w-20 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 text-xs font-bold font-mono dark:text-white bg-[#FAF8F5] dark:bg-[#130d0d] text-center focus:outline-none" />
+              </div>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium">Auto-scales to 30 Marks in final calculation.</p>
+            </div>
+
+            <!-- Attendance Metrics -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10.5px]">Current Lecture Attendance (%)</label>
+                <span id="attendance-state" class="font-bold text-emerald-500">Good Status (88%)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input type="range" id="attendance-range" min="0" max="100" value="88" class="w-full accent-brand-maroon dark:accent-brand-gold h-1.5 rounded-full cursor-pointer bg-slate-100 dark:bg-slate-900" />
+                <input type="number" id="attendance-num" min="0" max="100" value="88" class="w-20 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 text-xs font-bold font-mono dark:text-white bg-[#FAF8F5] dark:bg-[#130d0d] text-center focus:outline-none" />
+              </div>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium select-none">Below 75% attendance triggers mandatory medical signout sheets or barred status rules.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Display Pane (5 Columns) -->
+        <div class="lg:col-span-5 bg-white dark:bg-[#181111] p-6 md:p-8 rounded-3xl border border-slate-205/65 dark:border-brand-maroon/20 shadow-md flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="flex items-center gap-2 mb-2">
+              <i data-lucide="award" class="h-5 w-5 text-brand-maroon dark:text-brand-gold bg-brand-maroon/5 dark:bg-brand-maroon/20 p-1.5 rounded"></i>
+              <h3 class="font-serif font-black text-md text-slate-900 dark:text-white uppercase tracking-tight">Active Projections</h3>
+            </div>
+            
+            <div class="bg-[#FAF8F5] dark:bg-[#150f10] p-6 rounded-2xl border border-slate-150 dark:border-brand-maroon/15 text-center">
+              <span class="text-[9px] font-mono font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase">Composite Scaled Score</span>
+              <div id="projected-score" class="text-4xl md:text-5xl font-black font-display text-brand-maroon dark:text-brand-gold mt-2">82.4 / 100</div>
+              
+              <hr class="my-4 border-slate-200 dark:border-brand-maroon/10" />
+              
+              <span class="text-[9px] font-mono font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase block">Letter Grade Curve Tier</span>
+              <div id="projected-grade" class="text-xl md:text-2xl font-serif font-black text-teal-500 mt-1 uppercase">A+ (Excellent)</div>
+            </div>
+
+            <!-- Attendance Warning Bar -->
+            <div id="attendance-warning-card" class="bg-rose-50 dark:bg-rose-950/20 border border-rose-250 dark:border-rose-900/40 p-4 rounded-2xl flex items-start gap-2.5 hidden">
+              <i data-lucide="alert-triangle" class="h-4.5 w-4.5 text-rose-550 shrink-0 mt-0.5 animate-bounce"></i>
+              <span class="text-[11px] text-rose-700 dark:text-rose-400 leading-relaxed font-semibold">
+                <b>ATTENDANCE WARNING:</b> Your current lecture standing is below the required <b>75% marks cutoff</b>. You face extreme risks of registration barring unless doctors medical logs are filed.
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-mono font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">Seniors Advisory Comment:</span>
+              <p id="senior-advice-text" class="text-xs text-slate-500 dark:text-slate-350 leading-relaxed font-semibold">
+                ✨ Fantastic job! Highly competitive score. Keep resolving the assignments to lock this down.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-slate-100 dark:border-brand-maroon/10 text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-wide font-medium">
+            Subject averages vary on relative bell matrices. Keep internals above 60/70.
+          </div>
+        </div>
+      </div>
+
+      <!-- RESEARCH GROUPS & CONTACT COMPOSER -->
+      <div class="mt-20 border-t border-slate-200/60 dark:border-brand-maroon/20 pt-16 text-left">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[10px] tracking-widest uppercase bg-brand-maroon/5 dark:bg-brand-gold/10 text-brand-maroon dark:text-brand-gold-light font-extrabold px-4 py-1.5 rounded-xl border border-brand-maroon/10 dark:border-brand-gold/30">
+            Faculty Collaboration Hub
+          </span>
+          <h2 class="text-2xl md:text-3xl font-serif font-black mt-3 tracking-tight text-slate-909 dark:text-white uppercase">
+            Research Interest Groups
+          </h2>
+          <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed font-semibold">
+            Discover active research domains at Amrita Amaravati. Connect with professors, assist on publications, and gain academic leverage. Select a group and edit your details to draft your collaboration request.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <!-- Research Groups Buttons List (5 Columns) -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="text-[11px] font-extrabold tracking-widest uppercase text-slate-400 dark:text-slate-550 mb-1 px-1">
+              Select a Research Domain:
+            </div>
+            
+            <div class="space-y-3.5" id="research-groups-container">
+              <!-- Rendered Dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Contact Template Maker (7 Columns) -->
+          <div class="lg:col-span-7 bg-white dark:bg-[#181111] p-6 md:p-8 rounded-3xl border border-slate-200/60 dark:border-brand-maroon/20 shadow-lg flex flex-col justify-between">
+            <div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
+                <span id="draft-logo" class="p-1 px-2 text-[9px] font-mono tracking-widest font-extrabold bg-brand-maroon/10 dark:bg-brand-gold/20 text-brand-maroon dark:text-brand-gold rounded uppercase inline-block self-start sm:self-auto">
+                  DRAFT COMPOSER
+                </span>
+                <span class="hidden sm:inline text-xs text-slate-400">→</span>
+                <span id="draft-to-line" class="text-xs font-bold text-slate-655 dark:text-slate-300 truncate">
+                  To: Dr. Rama Krishna (ramakrishna@ama.amrita.edu)
+                </span>
+              </div>
+              <h3 class="font-serif font-black text-lg md:text-xl text-slate-900 dark:text-white uppercase tracking-tight mb-2">
+                Collaboration Request Letter
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 font-semibold leading-relaxed">
+                Personalize your researcher details below. The interactive mail drafting system will construct a professional inquiry mail to professors.
+              </p>
+
+              <!-- Inputs for draft Customization -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                <div class="space-y-1">
+                  <label class="text-[10px] font-extrabold text-slate-500 dark:text-slate-405 tracking-wide uppercase">Your Full Name</label>
+                  <input type="text" id="draft-student-name" placeholder="e.g. Varshini E." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 bg-[#FAF8F5] dark:bg-[#130d0d] focus:border-brand-maroon focus:ring-1 focus:ring-brand-maroon focus:outline-none text-xs dark:text-slate-100 font-semibold" />
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-[10px] font-extrabold text-slate-500 dark:text-slate-405 tracking-wide uppercase">Your Branch / Class id</label>
+                  <input type="text" id="draft-student-branch" placeholder="e.g. CSE (AI), Roll Sec A" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 bg-[#FAF8F5] dark:bg-[#130d0d] focus:border-brand-maroon focus:ring-1 focus:ring-brand-maroon focus:outline-none text-xs dark:text-slate-100 font-semibold" />
+                </div>
+
+                <div class="md:col-span-2 space-y-1">
+                  <label class="text-[10px] font-extrabold text-slate-500 dark:text-slate-405 tracking-wide uppercase">Primary Technical Skills or Research Area Interest</label>
+                  <input type="text" id="draft-student-skills" placeholder="e.g. Python, Linear Algebra, Neural Networks, PyTorch" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-brand-maroon/30 bg-[#FAF8F5] dark:bg-[#130d0d] focus:border-brand-maroon focus:ring-1 focus:ring-brand-maroon focus:outline-none text-xs dark:text-slate-100 font-semibold" />
+                </div>
+              </div>
+
+              <!-- Live Letter Preview Box -->
+              <div class="bg-[#FAF8F5] dark:bg-[#140f0f] border border-slate-200 dark:border-brand-maroon/15 p-5 rounded-2xl font-mono text-[11px] text-slate-600 dark:text-slate-300 space-y-2 relative max-h-[220px] overflow-y-auto mb-6">
+                <div class="text-slate-400 absolute top-2 right-3 font-semibold uppercase text-[8px] tracking-widest pointer-events-none select-none">Draft Preview</div>
+                <div class="font-bold text-slate-800 dark:text-white">
+                  Subject: <span id="draft-subject" class="text-brand-maroon dark:text-brand-gold font-medium">Inquiry: Undergrad Research Collaboration</span>
+                </div>
+                <hr class="border-slate-150 dark:border-brand-maroon/10 my-2" />
+                <div id="draft-body-preview" class="space-y-2 leading-relaxed">
+                  <!-- Generated dynamically via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Mail action triggers -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-150 dark:border-brand-maroon/15 pt-5 mt-auto">
+              <div class="flex items-start gap-2 text-slate-400 dark:text-slate-500 max-w-[70%] text-[10px] leading-relaxed">
+                <i data-lucide="info" class="h-4 w-4 text-brand-maroon dark:text-brand-gold shrink-0 mt-0.5"></i>
+                <span>Clicking "Launch Email Draft" triggers your device's native mail client (e.g. Outlook/Gmail) pre-filled with this letter configuration.</span>
+              </div>
+              
+              <button id="launch-email-btn" class="w-full sm:w-auto bg-brand-maroon hover:bg-brand-maroon-light dark:bg-brand-gold dark:hover:bg-brand-gold-light text-[#ffffff] dark:text-[#2d2105] font-extrabold text-xs tracking-wider uppercase px-6 py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-md flex items-center justify-center gap-2 cursor-pointer shrink-0">
+                <i data-lucide="mail" class="h-4 w-4"></i>
+                <span>Launch Email Draft</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOSTELS, DINING & ESSENTIALS -->
+    <section id="hostel" class="bg-[#faf6f2] dark:bg-[#120a0a] py-20 scroll-mt-24 border-y border-brand-maroon/10 text-left">
+      <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-[10px] tracking-widest uppercase bg-brand-maroon/5 dark:bg-brand-gold/10 text-brand-maroon dark:text-brand-gold-light font-extrabold px-4 py-1.5 rounded-xl border border-brand-maroon/10 dark:border-brand-gold/30">
+            Student Housing & Conveniences
+          </span>
+          <h2 class="text-3xl md:text-4xl font-serif font-black mt-4 tracking-tight uppercase text-slate-900 dark:text-white">
+            Hostels, Dining & Essentials
+          </h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-semibold">
+            Boarding protocols, laundry schedules, food ratings, and dynamic pacing calculators. Prepare your packing list early.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Room & Logistics (8 Columns) -->
+          <div class="lg:col-span-8 flex flex-col gap-6">
+            
+            <!-- Campus Hostel Exterior Highlight -->
+            <div class="rounded-3xl overflow-hidden border border-brand-maroon/20 dark:border-brand-maroon/30 shadow-md relative h-[210px] bg-slate-950 group">
+              <img 
+                src="assets/images/amrita_hostel_1780320971747.png" 
+                alt="Amrita Student Hostels exterior" 
+                class="w-full h-full object-cover opacity-85 group-hover:scale-102 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/30 to-transparent flex flex-col justify-end p-6">
+                <span class="text-[9px] font-mono font-bold tracking-widest text-[#ebb232] uppercase">PREMIUM CAMPUS RESIDENCE</span>
+                <h3 class="text-lg md:text-xl font-serif font-black text-white mt-1 uppercase">Modern Boarding Built for Comfort & Safety</h3>
+                <p class="text-[11px] text-slate-200 mt-1 font-medium leading-relaxed max-w-xl">
+                  Featuring ultra-modern student residential chambers, equipped with centralized air conditioning options, generous personal study bays, high-speed biometric access lanes, and beautiful lush landscaping.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Girls Card -->
+              <div class="bg-white dark:bg-[#181111] p-6 rounded-2xl border border-brand-maroon/15 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-maroon/5 rounded-full blur-xl -mr-6 -mt-6"></div>
+                <span class="inline-block px-2.5 py-1 rounded bg-brand-maroon/5 dark:bg-brand-maroon/20 text-brand-maroon dark:text-brand-gold font-extrabold text-[9px] font-mono tracking-widest uppercase">GIRLS RESIDENCE</span>
+                <h3 class="text-base font-serif font-black mt-3 text-slate-900 dark:text-white uppercase">Cozy, En-Suite Chambers</h3>
+                <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-2 mt-4 leading-relaxed font-semibold">
+                  <li class="flex items-center gap-2">🚪 <span class="font-bold text-slate-805 dark:text-slate-300">3-Sharing Standard:</span> Spacious rooms with personal shelves</li>
+                  <li class="flex items-center gap-2">🚿 <span class="font-bold text-slate-805 dark:text-slate-300">Attached Washrooms:</span> Fully en-suite private bathroom</li>
+                  <li class="flex items-center gap-2">🔒 <span class="font-bold text-brand-maroon dark:text-brand-gold-light">Curfew Lock:</span> Strictly checked biometric gate scans at <b>8:45 PM</b></li>
+                </ul>
+              </div>
+
+              <!-- Boys Card -->
+              <div class="bg-white dark:bg-[#181111] p-6 rounded-2xl border border-brand-gold/30 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-full blur-xl -mr-6 -mt-6"></div>
+                <span class="inline-block px-2.5 py-1 rounded bg-brand-gold/10 text-brand-gold-dark dark:text-brand-gold font-extrabold text-[9px] font-mono tracking-widest uppercase">BOYS RESIDENCE</span>
+                <h3 class="text-base font-serif font-black mt-3 text-slate-900 dark:text-white uppercase">Social & Dynamic Wings</h3>
+                <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-2 mt-4 leading-relaxed font-semibold">
+                  <li class="flex items-center gap-2">🚪 <span class="font-bold text-slate-805 dark:text-slate-300">4-Sharing Standard:</span> Wide airy desks and broad window frames</li>
+                  <li class="flex items-center gap-2">🚿 <span class="font-bold text-slate-805 dark:text-slate-300">Common Washrooms:</span> Large separate community showers block</li>
+                  <li class="flex items-center gap-2">🔒 <span class="font-bold text-brand-gold-dark dark:text-brand-gold">Curfew Lock:</span> Strictly checked biometric gate scans at <b>9:00 PM</b></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Bento Conveniences Map -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="glass-panel p-5 rounded-2xl bg-white/55 dark:bg-slate-900/55 border border-slate-200/50 dark:border-slate-802/80">
+                <div class="p-2 bg-orange-50/10 text-orange-600 rounded-lg w-max mb-3">
+                  <i data-lucide="coffee" class="h-5 w-5"></i>
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">🍛 Mess & Dining Food</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed font-semibold">
+                  Generally rated as highly tasty compared to other boards. Multiple North & South Indian menus rotate weekly. There stands a central cafeteria for late hot bites.
+                </p>
+              </div>
+
+              <div class="glass-panel p-5 rounded-2xl bg-white/55 dark:bg-slate-900/55 border border-slate-200/50 dark:border-slate-820/80">
+                <div class="p-2 bg-teal-50/10 text-teal-605 rounded-lg w-max mb-3">
+                  <i data-lucide="shield" class="h-5 w-5"></i>
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">🧺 Included Laundry</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed font-semibold">
+                  Standard washing services are fully covered in the standard hostel boarding fee structure. Ironing is an optional add-on priced at roughly ₹10 per item.
+                </p>
+              </div>
+
+              <div class="glass-panel p-5 rounded-2xl bg-white/55 dark:bg-slate-900/55 border border-slate-200/50 dark:border-slate-820/80">
+                <div class="p-2 bg-sky-50/10 text-sky-600 rounded-lg w-max mb-3">
+                  <i data-lucide="wifi" class="h-5 w-5"></i>
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">📶 Room WiFi Speeds</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed font-semibold">
+                  High-speed student WiFi routers reside on matching partition blocks. Completely fine for regular study databases, GitHub pushes, and live video lectures.
+                </p>
+              </div>
+            </div>
+
+            <!-- Facilities checklist -->
+            <div class="bg-white dark:bg-[#181111] p-6 rounded-3xl border border-slate-200 dark:border-brand-maroon/20 shadow-sm">
+              <h4 class="font-serif font-black text-sm mb-4 flex items-center gap-2 text-slate-900 dark:text-white uppercase tracking-tight">
+                <i data-lucide="activity" class="h-4.5 w-4.5 text-brand-maroon dark:text-brand-gold"></i>
+                Amaravati Core Campus Facilities Checklist
+              </h4>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-600 dark:text-slate-400 font-semibold animate-none">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>Fully Loaded Student Gym</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>Modern Reference Library</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>24/7 Central Medical Unit</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>Dynamic Innovation Labs</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>Volleyball & Sport Fields</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                  <span>Interactive Multi-Cuisine Café</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Packing Checklist Widget (4 Columns) -->
+          <div class="lg:col-span-4 bg-white dark:bg-[#181111] p-6 rounded-3xl border border-brand-maroon/15 shadow-lg relative">
+            <div class="flex items-center justify-between mb-6 border-b border-slate-200/60 dark:border-brand-maroon/15 pb-4">
+              <div>
+                <h3 class="font-serif font-black text-base text-slate-900 dark:text-white uppercase tracking-tight leading-tight">
+                  What Seniors Wish They Packed
+                </h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-semibold">Keep track before moving</p>
+              </div>
+
+              <!-- Circular Progress Gauge -->
+              <div class="relative w-16 h-16 shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 72 72">
+                  <circle class="text-slate-100 dark:text-slate-900/40" stroke-width="4.5" stroke="currentColor" fill="transparent" r="32" cx="36" cy="36" />
+                  <circle id="checklist-progress" class="text-brand-maroon dark:text-[#ebb232] transition-all duration-300" stroke-width="4.5" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" stroke="currentColor" fill="transparent" r="32" cx="36" cy="36" />
+                </svg>
+                <div class="absolute text-center flex flex-col justify-center items-center">
+                  <span id="pack-ratio" class="text-[10px] font-mono font-black text-slate-900 dark:text-white">0/6</span>
+                  <span class="text-[7px] uppercase tracking-wider text-slate-400 font-bold scale-90">Packed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mattress missing Warning Bar -->
+            <div id="mattress-warning" class="mb-4 bg-amber-50 dark:bg-[#2c1a12] border border-amber-200 dark:border-brand-maroon/30 p-3 rounded-2xl flex items-start gap-2.5">
+              <i data-lucide="alert-triangle" class="h-4.5 w-4.5 text-brand-gold shrink-0 mt-0.5 animate-bounce"></i>
+              <span class="text-[11px] text-brand-gold-dark dark:text-slate-200 leading-relaxed font-semibold">
+                <b>VITAL REMINDER:</b> A sturdy wooden cot is supplied, but the actual <b>Mattress is most commonly forgotten</b>! Make sure to pre-order or purchase yours nearby before travel.
+              </span>
+            </div>
+
+            <!-- Checklist Labels list -->
+            <div class="space-y-3.5" id="packing-checklist-box">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLUBS, GROUPS & HACKATHON CELEBRATION -->
+    <section id="clubs" class="max-w-7xl mx-auto px-4 py-20 scroll-mt-24 text-left">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-[10px] tracking-widest uppercase bg-brand-maroon/5 dark:bg-brand-gold/10 text-brand-maroon dark:text-brand-gold-light font-extrabold px-4 py-1.5 rounded-xl border border-brand-maroon/10 dark:border-brand-gold/30">
+          In-Depth Clubs Catalog
+        </span>
+        <h2 class="text-3xl md:text-4xl font-serif font-black mt-4 tracking-tight uppercase text-slate-900 dark:text-white">
+          Clubs & Student Societies
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-semibold">
+          Amrita's vibrant student ecosystem has a group tailored for you. Filter and discover your future team.
+        </p>
+      </div>
+
+      <!-- Categories filters selection menu -->
+      <div id="filter-chips-wrapper" class="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+        <!-- Rendered dynamically via JS to keep states synced -->
+      </div>
+
+      <!-- Clubs cards dynamic outputs grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clubs-grid-container">
+        <!-- Structured via script.js -->
+      </div>
+
+      <!-- Quick Guidance -->
+      <div class="mt-12 bg-[#FAF8F5] dark:bg-[#150e0e] p-6 rounded-3xl border border-brand-maroon/10 dark:border-brand-maroon/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <h4 class="font-serif font-black text-sm text-brand-maroon dark:text-brand-gold camel-case uppercase tracking-wide">💡 How Club Registration Works at Amrita Amaravati</h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed max-w-2xl font-semibold">
+            Registration forms are released online within Month 2 of the semester. Selective technical blocks host offline filtering rounds (basic logic, written aptitude coding, or creative rounds) to place candidates. Pick according to your genuine energy!
+          </p>
+        </div>
+        <span class="text-xs font-bold px-4 py-2 bg-brand-maroon/5 text-brand-maroon dark:text-brand-gold rounded-full flex-shrink-0 border border-brand-maroon/20">
+          Multiple selections allowed
+        </span>
+      </div>
+
+      <!-- FLAGSHIP SPOTLIGHT EVENT CHECKER -->
+      <div id="hackathon-corner" class="mt-20 bg-[#1c0c0d] text-white p-8 md:p-12 rounded-3xl relative overflow-hidden shadow-xl border border-brand-maroon/20">
+        
+        <!-- background lighting glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(235,178,50,0.12),transparent_60%)]"></div>
+        
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-brand-gold-light font-bold text-xs rounded-full border border-white/5 uppercase tracking-wide">
+              <span>🚀 FLAGSHIP EVENT CELEBRATION</span>
+            </div>
+            
+            <h3 class="text-3xl md:text-5xl font-serif font-black tracking-tight leading-none uppercase">
+              HACK X AMRITA 2.0
+            </h3>
+            
+            <p class="text-slate-350 text-sm md:text-base leading-relaxed font-semibold">
+              Amrita Amaravati's premier hackathon event that stands as a core testament to the campus's rising coding and startup atmosphere! 
+              Seniors organized and students delivered, laying down robust technical ideas, hacking prototype models overnight, and presenting to panels of external corporate judges.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-left border-t border-white/10 pt-6 font-semibold">
+              <div>
+                <div class="text-2xl font-bold font-serif text-brand-gold">30 Hours</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Intense Dev-Athon</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold font-serif text-[#fcd97f]">₹75,000</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Cash Prize Pool</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold font-serif text-amber-300">Epic Vibe</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">100% Student Led</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature graphics cards -->
+          <div class="lg:col-span-5 rounded-3xl overflow-hidden border border-white/15 bg-white/5 flex flex-col justify-between shadow-2xl backdrop-blur-md">
+            <div class="h-[170px] w-full relative">
+              <img 
+                src="assets/images/hackathon_scene_1780300788851.png" 
+                alt="Hack X Amrita 2.0 Team Developers" 
+                class="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-103"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1b0a0b] via-[#1b0a0b]/10 to-transparent"></div>
+              <div class="absolute bottom-3 left-4 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[9px] font-mono text-emerald-200 font-bold uppercase tracking-wider bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-900/40">Hacking Live</span>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-3 font-semibold text-slate-300 text-xs">
+                <p>⚡ <b>Open Coding Culture:</b> Junior-senior mixed team formations are heavily promoted. Learn from direct codebase mentors without friction.</p>
+                <p>🍔 <b>Full Catering:</b> Fully student-managed catering systems—continuous feeds, refreshing snacks, and caffeine stations to keep the energy high.</p>
+                <p>🏆 <b>Judges Support & CVs:</b> Direct technical feedback from top senior software engineers judging the final prototype presentations.</p>
+              </div>
+
+              <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-center">
+                <span class="text-[9px] uppercase font-bold tracking-widest text-[#ebb232] font-mono block">Up next: HACK X AMRITA 3.0</span>
+                <p class="text-[10px] text-slate-400 mt-1 font-semibold">Expect registration portals to launch around Semester 2 of 2026!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIRST SEMESTER ROADMAP -->
+    <section id="roadmap" class="max-w-7xl mx-auto px-4 py-20 scroll-mt-24 text-left">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-mono font-bold px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-900/50">
+          Semester 1 Timeline
+        </span>
+        <h2 class="text-3xl font-display font-extrabold mt-4 tracking-tight">
+          First Semester Month-by-Month Roadmap
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+          A real student's journey mapped month-by-month. Know what lies ahead and adjust strategically.
+        </p>
+      </div>
+
+      <!-- Month quick Picker buttons navigation block -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-4xl mx-auto" id="roadmap-buttons-bar">
+        <!-- Rendered via script.js -->
+      </div>
+
+      <!-- Interactive card -->
+      <div class="max-w-3xl mx-auto" id="selected-roadmap-card-box">
+        <!-- Generated by script.js -->
+      </div>
+    </section>
+
+    <!-- SENIOR WISE ADVICE & TRAPS PANEL -->
+    <section id="survival" class="bg-slate-50/70 dark:bg-slate-900/20 py-20 scroll-mt-24 border-b border-slate-200/50 dark:border-slate-800/10 text-left">
+      <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-mono font-bold px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-900/50">
+            Survival Blueprint
+          </span>
+          <h2 class="text-3xl font-display font-extrabold mt-4 tracking-tight">
+            Advice from Seniors: The Survival Kit
+          </h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+            Uncensored developer wisdom. The 6 critical mistakes first-year freshers make and how to avoid them easily.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          
+          <!-- Wisdom rules -->
+          <div class="glass-panel p-6 md:p-8 rounded-3xl border border-indigo-500/10 bg-white/50 dark:bg-slate-900/50 shadow-md">
+            <h3 class="font-display font-bold text-xl mb-6 flex items-center gap-2 text-slate-900 dark:text-slate-100 border-b border-slate-200/40 dark:border-slate-800/80 pb-3">
+              <i data-lucide="lightbulb" class="h-5 w-5 text-amber-500 shrink-0"></i>
+              Core Senior Wisdom Principles
+            </h3>
+            
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div class="p-3 bg-indigo-100/50 dark:bg-indigo-950/40 rounded-xl h-max shrink-0 flex items-center justify-center">
+                  <i data-lucide="user-check" class="h-5 w-5 text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800 dark:text-slate-250">1. Build your network early</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed font-semibold">
+                    Make genuine friends with both day scholars and boarders. Connect with seniors; they hold previous years' quiz blueprints, question papers, and resource drive drives!
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="p-3 bg-indigo-100/50 dark:bg-indigo-950/40 rounded-xl h-max shrink-0 flex items-center justify-center">
+                  <i data-lucide="code" class="h-5 w-5 text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800 dark:text-slate-250">2. Focus deeply on logic over rote memory</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed font-semibold">
+                    Memorizing code from slides gets you zero points inside labs. Learn core data structures, practice algorithms on compiler consoles, and solve problems from base fundamentals.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="p-3 bg-indigo-100/50 dark:bg-indigo-950/40 rounded-xl h-max shrink-0 flex items-center justify-center">
+                  <i data-lucide="graduation-cap" class="h-5 w-5 text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800 dark:text-slate-250">3. Approach Faculty for Research Opportunities</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed font-semibold">
+                    Amrita faculty are highly active in scientific research. If you are interested in AI, Cryptography, or Material Science, book consultation hours and ask to help on papers. Co-authoring is a fantastic CV highlight!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common pitfalls cards -->
+          <div class="glass-panel p-6 md:p-8 rounded-3xl border border-rose-500/10 bg-white/50 dark:bg-slate-900/50 shadow-md">
+            <h3 class="font-display font-bold text-xl mb-6 flex items-center gap-2 text-rose-650 dark:text-rose-400 border-b border-slate-200/40 dark:border-slate-805/80 pb-3">
+              <i data-lucide="shield-alert" class="h-5 w-5 text-rose-500 shrink-0"></i>
+              6 Common Freshers Traps & How to Avoid
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 1: Keeping doubts locked up</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">Seniors say: Speak up! Waiting until exam night is a direct path to low relative grade averages.</p>
+              </div>
+
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 2: Ignoring essential soft skills</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">Placements filters assess verbal communication and team coordination just as much as your core scripts.</p>
+              </div>
+
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 3: Chasing points over competence</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">High GPA marks are useless if you struggle heavily inside whiteboard developer screenings.</p>
+              </div>
+
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 4: Joining no student club</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">Join cultural or development teams! It provides outstanding leadership experience and life parameters.</p>
+              </div>
+
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 5: Terribly poor weekly tracking</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">Failing to write daily records means you'll have 10 messy files to submit during midterm weeks.</p>
+              </div>
+
+              <div class="p-3.5 bg-rose-500/5 dark:bg-rose-955/10 border border-rose-500/10 rounded-2xl flex flex-col justify-between">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 block">❌ Trap 6: Failing to connect with seniors</span>
+                <p class="text-[10.5px] text-slate-500 dark:text-slate-400 mt-2.5 leading-normal font-semibold">Never hesitate to drop a 'Hi' to a second or third-year student. We are completely eager to guide you!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Milestones map sub-section -->
+        <div class="mt-20">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs uppercase bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 font-mono font-bold px-3 py-1 rounded-full border border-purple-100 dark:border-purple-900/50">
+              Future Milestones
+            </span>
+            <h3 class="text-2xl font-display font-extrabold mt-3 text-slate-900 dark:text-slate-100 font-sans">
+              Second Year onwards: Custom Careers Pathways
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">
+              At Amrita Amaravati, there is no single predetermined route. Match what aligns with your profile early on.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">💻</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">Competitive Programming</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Solving logic grids on LeetCode, CodeForces, and preparing for ACM ICPC. Incredible pathway for high-paying software roles.
+              </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">👾</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">Dynamic Tech Development</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Building websites, React setups, Node engines, database apps, and compiling system widgets. Learn by making real-world tools.
+              </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">🤖</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">AI / ML Engineering</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Implementing data preprocessing, PyTorch models, Neural networks, or tuning modern generative API nodes.
+              </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">📊</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">Aptitude & Corporate Prep</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Diving deep into DBMS, Operating Systems, Computer Networks, and SQL challenges starting around Semester 4.
+              </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">🔬</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">Scientific Research Publish</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Drafting academic papers with faculty and co-submitting them to global IEEE conferences or Springer journals.
+              </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl bg-[#ffffff]/40 dark:bg-slate-900/40 border border-slate-205 dark:border-slate-800/80 hover:scale-102 transition-transform duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xl">💼</span>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-slate-100">Startups & Incubation</h4>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                Ideating tech products, pitching presentation slide summaries to campus cells, and exploring seed incubation funds.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCHABLE FAQS HELPDESK -->
+    <section id="faq" class="max-w-7xl mx-auto px-4 py-20 scroll-mt-24 text-left">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase bg-indigo-50 dark:bg-indigo-950/40 text-indigo-605 dark:text-indigo-400 font-mono font-bold px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-900/50">
+          Senior Helpdesk FAQs
+        </span>
+        <h2 class="text-3xl font-display font-extrabold mt-4 tracking-tight">
+          The Ultimate Student FAQ Directory
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-medium">
+          Exactly 20 highly detailed, honest answers to genuine fresher worries about Amrita Amaravati. Real insights only.
+        </p>
+      </div>
+
+      <!-- FAQ Search Input and quick filtering tags buttons -->
+      <div class="max-w-3xl mx-auto mb-10 px-2 space-y-5">
+        <div class="flex items-center gap-2 p-2.5 rounded-full bg-[#ffffff] dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm focus-with-ring focus-within:ring-1 focus-within:ring-indigo-500/55 transition-all">
+          <i data-lucide="search" class="h-5 w-5 text-indigo-500 ml-3 shrink-0"></i>
+          <input 
+            type="text" 
+            id="faq-search-input"
+            placeholder="Search the 20 questions directory... (e.g., 'relative', 'curfew', 'AC bus', 'meals')" 
+            class="w-full bg-transparent outline-none border-none text-xs sm:text-sm pl-1 py-1 text-slate-800 dark:text-slate-100" 
+          />
+        </div>
+        
+        <!-- Tab Chips Categories -->
+        <div class="flex flex-wrap items-center justify-center gap-2" id="faq-chips-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- FAQ Accordions dynamic wrapper -->
+      <div class="max-w-3xl mx-auto space-y-4 font-sans" id="faq-accordions-wrapper">
+        <!-- Rendered based on inputs via script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- WEBSITE FOOTER -->
+  <footer class="bg-white dark:bg-[#110c0c] border-t border-slate-200 dark:border-brand-maroon/20 pt-16 pb-12 mt-20 text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10 text-left">
+      <div class="space-y-4 md:col-span-2">
+        <div class="flex items-center gap-2.5">
+          <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-maroon text-brand-gold">
+            <i data-lucide="graduation-cap" class="h-4.5 w-4.5"></i>
+          </div>
+          <span class="font-bold text-slate-900 dark:text-white tracking-widest uppercase">CAMPUS COMPASS</span>
+        </div>
+        <p class="leading-relaxed text-[11px] font-medium max-w-md">
+          This portal stands as an unofficial, peer-to-peer roadmap designed purely to assist and transition incoming freshers of Amrita Amaravati 2026. Built by students, for students.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-mono text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider mb-4">RESOURCES</h4>
+        <ul class="space-y-2 font-bold text-slate-705 dark:text-slate-350">
+          <li><a href="#academics" class="hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Grade Predictor</a></li>
+          <li><a href="#hostel" class="hover:text-brand-maroon dark:hover:text-brand-gold transition-colors">Packing Checklist</a></li>
+          <li><a href="#clubs" class="hover:text-brand-maroon dark:hover:text-brand-gold transition-colors font-sans">Active Clubs Directory</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider mb-4">COMMUNITY DIRECT</h4>
+        <p class="leading-relaxed text-[11px] font-semibold mb-3">Have feedback or want to expand this guide with your own year tips?</p>
+        <a href="#academics" class="inline-flex items-center gap-1.5 text-brand-maroon dark:text-brand-gold font-bold hover:underline">
+          <span>Contact Campus Leaders</span>
+          <i data-lucide="arrow-right" class="h-3 w-3"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-100 dark:border-brand-maroon/10 text-center flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-400 dark:text-slate-500 h-full font-medium">
+      <p>© 2026 Amrita Amaravati Senior Peer Network. All Rights Reserved.</p>
+      <div class="flex gap-4">
+        <span>Curated with pure devotion</span>
+        <span>•</span>
+        <span>Amaravati Campus</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Web Logic Script Reference -->
+  <script src="script.js"></script>
+</body>
 </html>
