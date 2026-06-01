@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fira+Code:wght@355;450;550&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "Fira Code", "JetBrains Mono", monospace;
+  
+  --color-brand-maroon: #851215;
+  --color-brand-maroon-dark: #5e0b0d;
+  --color-brand-maroon-light: #a61c20;
+  --color-brand-gold: #c39c33;
+  --color-brand-gold-dark: #a17f22;
+  --color-brand-gold-light: #edd17d;
+  --color-dark-card: #181111;
+  --color-dark-bg: #0c0808;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Custom transitions and scroll behaviors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations and styling to match official premium look */
+.bg-gradient-amrita {
+  background: linear-gradient(135deg, #851215 0%, #4a0709 100%);
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #e4bf5c 0%, #c39c33 100%);
+}
+
+/* Text glow */
+.text-glow-gold {
+  text-shadow: 0 0 12px rgba(243, 215, 114, 0.4);
+}
+
+.text-glow-maroon {
+  text-shadow: 0 0 15px rgba(133, 18, 21, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #110909;
+}
+::-webkit-scrollbar-thumb {
+  background: #c39c33;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #851215;
+}
+
+/* Dynamic glow cards */
+.premium-glow-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(133, 18, 21, 0.12);
+}
+.dark .premium-glow-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(243, 215, 114, 0.08);
+}

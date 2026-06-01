@@ -1,0 +1,242 @@
+/* 
+ * CAMPUS COMPASS - Amrita Amaravati 2026 Fresher Guide
+ * High-performance, modern custom styles (Glassmorphism, Shadows, Transitions)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Default base resets & variables if running standalone */
+:root {
+  --primary: #6C63FF;
+  --secondary: #4F46E5;
+  --accent: #A855F7;
+  
+  /* Glassmorphism custom components */
+  --glass-bg-light: rgba(255, 255, 255, 0.45);
+  --glass-border-light: rgba(255, 255, 255, 0.3);
+  --glass-shadow-light: rgba(31, 38, 135, 0.05);
+
+  --glass-bg-dark: rgba(15, 23, 42, 0.45);
+  --glass-border-dark: rgba(255, 255, 255, 0.08);
+  --glass-shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow-light);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-panel {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow-dark);
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(108, 99, 255, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(108, 99, 255, 0.1);
+}
+
+.dark .glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.15);
+}
+
+/* Nav Link Hover Underline */
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Pulsing Radar Ring */
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: pulse 2s infinite ease-out;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Scroll reveal class animations handled dynamically */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Elegant Gradients */
+.gradient-bg-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 600px;
+  background: radial-gradient(circle at 50% 10%, rgba(108, 99, 255, 0.08) 0%, rgba(168, 85, 247, 0.05) 30%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.dark .gradient-bg-top {
+  background: radial-gradient(circle at 50% 10%, rgba(108, 99, 255, 0.15) 0%, rgba(168, 85, 247, 0.10) 40%, transparent 80%);
+}
+
+/* Interactive Grid Dots */
+.grid-overlay {
+  background-size: 24px 24px;
+  background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+}
+
+.dark .grid-overlay {
+  background-image: radial-gradient(#334155 1.1px, transparent 1.1px);
+}
+
+/* Linear/Stripe Card Border highlight */
+.border-gradient-container {
+  position: relative;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+}
+
+/* Custom checkbox wrapper for high-fidelity interactive list */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.custom-checkbox input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.custom-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Custom Accordion smooth transition height */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+}
+
+.faq-answer.open {
+  padding-bottom: 1.25rem;
+}
+
+/* Custom dynamic circular stats visualizer for Senior Pack checklist */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Hero Title animation gradients */
+.animate-gradient-text {
+  background: linear-gradient(to right, #6C63FF, #A855F7, #4F46E5, #6C63FF);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 6s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
